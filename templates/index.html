@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title>Home: Media Server</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <h1>Home: Search movie files</h1>
+
+  <div id="video-files">
+    <input type="text" id="search-reserve-string" v-model="searchReserveString" v-on:keydown.enter="searchReserveConditions">
+    <input type="button" id="search-reserve-button" v-on:click="this.searchReserveConditions" value="Search">
+
+    <table>
+      <thead>
+        <tr>
+          <template v-for="t in reserveConditionsHeader" :key="t.filepath">
+            <th>
+              ${ t }
+            </th>
+          </template>
+        <tr>
+      </thead>
+
+      <tbody>
+        <template v-for="movie in reservedConditions.movies">
+          <tr>
+            <td>
+              <a :href="movie.dir + '/' + movie.filepath">
+              ${ movie.filepath }
+            </td>
+            <td>
+              ${ movie.dir }
+            </td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="/static/js/media-server.js"></script>
+</body>
+</html>

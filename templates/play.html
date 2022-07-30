@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <title>Playing {{ moviePath }}</title>
+</head>
+<body>
+  <h1 id="movie-name">{{ movieName }}</h1>
+  <div>
+    <a href="javascript:history.back();">Back</a>
+    &nbsp;
+    <a href="/">Home</a>
+  </div>
+  <div>
+    <video id="myMovie" width="640" height="480" controls src="static/video/{{ moviePath }}"></video>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/static/js/movie-progress.js"></script>
+</body>
+</html>
