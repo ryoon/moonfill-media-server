@@ -3,6 +3,7 @@
 import flask
 import sqlite3
 import pathlib
+import urllib
 
 dbFile = 'database/media-server.sqlite3'
 
@@ -42,6 +43,7 @@ def getMoviesInfo():
                     "filename": video[1],
                     "dir": video[3],
                     "filepath": video[0],
+                    "encodedfilepath": urllib.parse.quote(video[0]),
                     "suffix": video[2]
                   })
   #print(result)
@@ -127,7 +129,8 @@ def showMoviePage(path):
 
 @app.route('/video/<path:path>')
 def transferMovie(path):
-  return flask.send_from_directory('static', path)
+  print("Sending:", path)
+  return flask.send_from_directory('static', urllib.parse.unquote(path))
 
 
 if __name__ == '__main__':

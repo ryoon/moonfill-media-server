@@ -29,7 +29,7 @@
         <template v-for="movie in reservedConditions.movies">
           <tr>
             <td>
-              <a :href="movie.dir + '/' + movie.filepath">
+              <a :href="movie.dir + '/' + movie.encodedfilepath">
               ${ movie.filepath }
             </td>
             <td>

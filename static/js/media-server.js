@@ -16,7 +16,7 @@ createApp({
   methods: {
     searchReserveConditions(event) {
       if (event) {
-        fetch('/v1/getMoviesInfo?q=' + this.searchReserveString)
+        fetch('/v1/getMoviesInfo?q=' + encodeURIComponent(this.searchReserveString))
           .then(resp => {
             if (resp.ok) {
               return Promise.resolve(resp.json());
